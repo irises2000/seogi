@@ -85,6 +85,7 @@ td {
 .image {
   padding: 5px;
   overflow-y: auto; /* 각 구분 영역에서 세로 스크롤 가능하도록 */
+  overflow-x: hidden; /* 좌우 스크롤 방지 */
   text-align: center; /* 텍스트 왼쪽 정렬 */
   margin-bottom: 10px; /* 항목 간 간격 */
   width: 100%; /* 구분 영역이 셀 전체를 채우도록 설정 */
