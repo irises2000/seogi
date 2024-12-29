@@ -4,7 +4,7 @@
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2")
     format("woff2");
   font-weight: 700;
-  unicode-range: U+0030-0039;
+  /* unicode-range: U+0030-0039; */
   font-style: normal;
 }
 
@@ -24,7 +24,7 @@
 /* 전체 화면의 스크롤을 막음 */
 html,
 body {
-  font-family: "BookkMyungjo-Bd", "AppleSDGothicNeoB";
+  font-family: "BookkMyungjo-Bd";
 
   height: 100%;
   margin: 0;
