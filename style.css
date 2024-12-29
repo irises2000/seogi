@@ -32,6 +32,11 @@ body {
   overflow: hidden; /* 상하 스크롤을 막음 */
   background-color: #ffffff;
   box-sizing: border-box;
+
+  overscroll-behavior: contain; /* 스크롤 체이닝 방지 */
+  overflow: hidden; /* 전체 페이지의 스크롤 방지 */
+  user-select: none; /* 텍스트 선택 방지 */
+  -webkit-user-select: none; /* 사파리 등 웹킷 브라우저 호환성 */
 }
 
 .table-container {
@@ -93,6 +98,12 @@ td {
   max-width: 100%; /* 이미지가 셀을 넘지 않도록 크기 제한 */
   height: auto; /* 이미지 비율 유지 */
   display: block; /* 이미지가 제대로 표시되도록 */
+}
+
+/* 이미지에 대한 드래그 방지 설정 */
+img {
+  user-drag: none; /* 이미지 드래그 방지 */
+  -webkit-user-drag: none; /* 웹킷 브라우저 호환성 */
 }
 
 .content {
