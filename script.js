@@ -7,80 +7,99 @@ function loadData() {
   Papa.parse(csvUrl, {
     download: true,
     complete: function (result) {
-      const table = document.getElementById("data-table");
+      console.log("CSV Data loaded:", result.data); // 데이터 확인
 
-      // 첫 번째 행을 통해 헤더를 판별
+      const table = document.getElementById("data-table");
+      table.innerHTML = ""; // 테이블 초기화
+
+      if (result.data.length === 0) {
+        console.log("No data found in the CSV.");
+        return;
+      }
+
       const headers = result.data[0];
       const dateIndex = headers.indexOf("date");
       const contentIndex = headers.indexOf("content");
       const imageIndex = headers.indexOf("img");
       const footnoteIndex = headers.indexOf("footnote");
+      const linkIndex = headers.indexOf("link");
 
-      // 날짜, 내용, 이미지 열 인덱스를 찾았다면 데이터 추출
-      const dates = result.data.slice(1).map((row) => row[dateIndex]);
-      const contents = result.data.slice(1).map((row) => row[contentIndex]);
-      const images = result.data.slice(1).map((row) => row[imageIndex]);
-      const footnotes = result.data.slice(1).map((row) => row[footnoteIndex]);
+      const rows = result.data.slice(1);
 
-      // 하나의 행에 date, image, content 쌍을 넣음
-      dates.forEach((date, index) => {
+      rows.forEach((row) => {
+        const date = row[dateIndex] || "";
+        let content = row[contentIndex] || "";
+        const imgSrc = row[imageIndex] || "";
+        let footnote = row[footnoteIndex] || "";
+        let link = row[linkIndex] || "";
+
+        content = content.replace(/\\n|Ctrl\+N/g, "\n");
+        footnote = footnote.replace(/\\n|Ctrl\+N/g, "\n");
+
         const tr = document.createElement("tr");
-
-        // 셀을 좌우로 배치하여 데이터 넣기
         const td = document.createElement("td");
-        const contentWithBreaks = contents[index].replace(/\n/g, "<br>"); // \n을 <br>로 변환
-        td.innerHTML = `        
-                    <button class="date-button" onclick="showPopup(${index})">${date}</button>
-                    <div class="image">
-                        <img src="${images[index]}" alt="" />
-                    </div>
-                    <div class="content">${contentWithBreaks}</div>
-                `;
+
+        const contentWithLineBreak = content.replace(/\n/g, "<br>");
+        const footnoteWithLineBreak = footnote.replace(/\n/g, "<br>");
+
+        td.innerHTML = `
+          <div class="date">${date}</div>
+          <div class="image"><img src="${imgSrc}" alt=""></div>
+          <div class="content">${contentWithLineBreak}</div>
+        `;
+
+        td.addEventListener("click", () =>
+          showPopup(date, imgSrc, content, footnote, link)
+        );
 
         tr.appendChild(td);
         table.appendChild(tr);
       });
     },
+    error: function (error) {
+      console.error("CSV Parsing Error:", error); // CSV 파싱 오류 확인
+    },
   });
 }
 
-// 페이지 로드 시 데이터 로드
-window.onload = loadData;
-
-// 팝업을 표시하는 함수
-function showPopup(index) {
+function showPopup(date, imgSrc, content, footnote, link) {
   const popup = document.createElement("div");
   popup.classList.add("popup");
 
-  const date = document.querySelectorAll(".date-button")[index].innerText;
-  let content = document.querySelectorAll(".content")[index].innerText;
-  const imgSrc = document.querySelectorAll(".image img")[index]?.src;
+  const formattedContent = content.replace(/\n/g, "<br>");
+  const formattedFootnote = footnote.replace(/\n/g, "<br>");
 
-  // 줄바꿈 처리: Ctrl + N을 인식하여 줄바꿈 문자로 변경
-  content = content.replace(/\n/g, "<br>"); // \n을 <br>로 변환
-
-  // 이미지가 있을 때만 HTML 삽입
-  let imageHTML = "";
-  if (imgSrc) {
-    imageHTML = `<img src="${imgSrc}" alt="" class="popup-image"/>`;
-  }
+  const linkButton = link
+    ? `<a href="${link}" class="popup-link-button" target="_blank">Visit Link</a>`
+    : "";
 
   popup.innerHTML = `
     <div class="popup-content">
-      <button class="close-btn" onclick="closePopup()">X</button>
-      <div class="popup-date">${date}</div>
-      ${imageHTML} <!-- 이미지 HTML 삽입 -->
-      <div class="popup-content-text">${content}</div>
+      <button class="close-btn" onclick="closePopup()">✕</button>
+      <div class="popup-inner">
+        <div class="left-box">
+          <div class="popup-link">${linkButton}</div>
+        </div>
+        <div class="center-box">
+          <div class="popup-date">${date}</div>
+          <div class="popup-image"><img src="${imgSrc}" alt="Popup Image"></div>
+          <div class="popup-content-text">${formattedContent}</div>
+        </div>
+        <div class="right-box">
+          <div class="popup-footnote">${formattedFootnote}</div>
+        </div>
+      </div>
     </div>
   `;
 
   document.body.appendChild(popup);
 }
 
-// 팝업을 닫는 함수
+// 팝업 닫기 함수
 function closePopup() {
   const popup = document.querySelector(".popup");
-  if (popup) {
-    popup.remove();
-  }
+  if (popup) popup.remove();
 }
+
+// 페이지 로드 시 데이터 로드
+window.onload = loadData;
