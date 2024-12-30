@@ -267,13 +267,13 @@ td {
 .popup-content-text::-webkit-scrollbar,
 .content::-webkit-scrollbar,
 .right-box::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 
 .popup-content-text::-webkit-scrollbar-thumb,
 .content::-webkit-scrollbar-thumb,
 .right-box::-webkit-scrollbar-thumb {
-  background-color: #888;
+  background-color: #d6d6d6;
   border-radius: 10px;
 }
 
