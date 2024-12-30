@@ -122,43 +122,112 @@ td {
   font-weight: bolder;
 }
 
-/* 팝업 내부 레이아웃 */
+/* 전체 팝업 */
 .popup-content {
-  background-color: rgba(255, 255, 255, 0);
   padding: 20px;
   width: 90%;
   max-width: 1000px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
   position: relative;
-  text-align: center;
-}
-
-/* 팝업 중앙 박스 */
-.center-box {
-  width: 80%; /* 중앙 박스는 나머지 40% */
-  padding: 10px;
+  height: 90%; /* 화면의 90% 높이 */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-/* popup-content-text에 스크롤 적용 */
-.popup-content-text {
-  font-size: 30px;
-  max-height: 500px; /* 높이를 제한하여 넘치면 스크롤이 생기도록 설정 */
-  overflow-y: auto; /* 수직 스크롤 활성화 */
-  margin-bottom: 10px;
+/* 팝업 내부 컨테이너 */
+.popup-inner {
+  display: grid;
+  grid-template-columns: 1fr 50vw 1fr; /* 1:2:1 비율 */
+  height: 100%; /* 전체 높이 사용 */
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+/* 좌측 박스 */
+.left-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-right: 1px solid #ddd; */
+  padding: 10px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.popup-link {
   text-align: center;
+  font-size: 14px;
+  word-wrap: break-word;
+  line-height: 1.5;
 }
 
-/* 이미지 스타일 */
+/* 중앙 박스 */
+.center-box {
+  display: grid;
+  grid-template-rows: auto 1fr 2fr; /* 위:중간:아래 비율 1:1:1 */
+  gap: 10px;
+  height: 100%; /* 부모 높이의 100% 사용 */
+  overflow: hidden; /* 내용이 넘어가지 않도록 설정 */
+  box-sizing: border-box;
+  padding: 10px;
+
+  justify-self: center;
+}
+
+/* 날짜 */
+.popup-date {
+  grid-row: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+}
+
+/* 이미지 */
+.popup-image {
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* overflow: hidden; */
+}
+
 .popup-image img {
-  width: 100%;
-  max-height: 500px;
+  max-width: 100%;
+  max-height: 300px;
   object-fit: contain;
+}
+
+/* 텍스트 */
+.popup-content-text {
+  grid-row: 3;
+  overflow-y: auto; /* 개별 스크롤 */
+  padding: 10px;
+  font-size: 30px;
+  line-height: 1.5;
+  text-align: center;
+  height: 100%; /* 부모 높이에 맞게 설정 */
+}
+
+/* 우측 박스 */
+.right-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-left: 1px solid #ddd; */
+  padding: 10px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.popup-footnote {
+  overflow-y: auto; /* 개별 스크롤 가능 */
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  padding: 10px;
+  text-align: left;
 }
 
 /* 팝업 기본 스타일 */
@@ -175,28 +244,6 @@ td {
   z-index: 1000;
 }
 
-/* 팝업 내부 레이아웃 */
-.popup-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start; /* 박스를 상단으로 정렬 */
-  width: 100%;
-}
-
-/* 좌측 박스 */
-.left-box,
-.right-box {
-  width: 30%; /* 좌측과 우측 박스의 너비를 30%로 설정 */
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-/* 푸터 스타일 */
-.popup-footnote {
-  font-size: 14px;
-  color: #888;
-}
-
 /* 팝업 닫기 버튼 스타일 */
 .close-btn {
   position: absolute;
@@ -206,14 +253,6 @@ td {
   border: none;
   font-size: 20px;
   cursor: pointer;
-}
-
-/* 팝업 중앙 정렬 */
-.popup-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start; /* 박스를 상단으로 정렬 */
-  width: 100%;
 }
 
 /* 스크롤바 디자인 */

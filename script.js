@@ -74,23 +74,28 @@ function showPopup(date, imgSrc, content, footnote, link) {
     : "";
 
   popup.innerHTML = `
-    <div class="popup-content">
-      <button class="close-btn" onclick="closePopup()">✕</button>
-      <div class="popup-inner">
-        <div class="left-box">
-          <div class="popup-link">${linkButton}</div>
-        </div>
-        <div class="center-box">
-          <div class="popup-date">${date}</div>
-          <div class="popup-image"><img src="${imgSrc}" alt="Popup Image"></div>
-          <div class="popup-content-text">${formattedContent}</div>
-        </div>
-        <div class="right-box">
-          <div class="popup-footnote">${formattedFootnote}</div>
-        </div>
+  <div class="popup-content">
+    <button class="close-btn" onclick="closePopup()">✕</button>
+    <div class="popup-inner">
+      <!-- Left Box -->
+      <div class="left-box">
+        <div class="popup-link">${linkButton}</div>
+      </div>
+
+      <!-- Center Box -->
+      <div class="center-box">
+        <div class="popup-date">${date}</div>
+        <div class="popup-image"><img src="${imgSrc}" alt="Popup Image"></div>
+        <div class="popup-content-text">${formattedContent}</div>
+      </div>
+
+      <!-- Right Box -->
+      <div class="right-box">
+        <div class="popup-footnote">${formattedFootnote}</div>
       </div>
     </div>
-  `;
+  </div>
+`;
 
   document.body.appendChild(popup);
 }
