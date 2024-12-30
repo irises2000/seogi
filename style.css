@@ -85,6 +85,13 @@ td {
   width: 100%;
 }
 
+.date {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: "Courier New", Courier, monospace;
+}
+
 .image {
   align-self: flex-end;
 }
@@ -101,7 +108,7 @@ td {
   line-height: 1.5;
   word-wrap: break-word;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 
   overflow-y: auto;
 }
