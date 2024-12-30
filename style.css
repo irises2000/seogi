@@ -307,9 +307,12 @@ td {
   .right-box {
     order: 3;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
+    align-items: flex-start; /* 텍스트가 칸의 가장 위에서부터 시작 */
+  }
+
+  .left-box:empty,
+  .right-box:empty {
+    display: none;
   }
 
   /* 빈 박스를 제거한 경우에 대한 레이아웃 조정은 필요 없음 */
