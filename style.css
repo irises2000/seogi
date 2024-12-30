@@ -126,7 +126,7 @@ td {
 .popup-content {
   padding: 20px;
   width: 90%;
-  max-width: 1000px;
+  /* max-width: 1000px; */
   position: relative;
   height: 90%; /* 화면의 90% 높이 */
   box-sizing: border-box;
@@ -247,8 +247,8 @@ td {
 /* 팝업 닫기 버튼 스타일 */
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0px;
+  right: 0px;
   background: none;
   border: none;
   font-size: 20px;
@@ -257,18 +257,21 @@ td {
 
 /* 스크롤바 디자인 */
 .popup-content-text::-webkit-scrollbar,
-.content::-webkit-scrollbar {
+.content::-webkit-scrollbar,
+.right-box::-webkit-scrollbar {
   width: 8px;
 }
 
 .popup-content-text::-webkit-scrollbar-thumb,
-.content::-webkit-scrollbar-thumb {
+.content::-webkit-scrollbar-thumb,
+.right-box::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 10px;
 }
 
 .popup-content-text::-webkit-scrollbar-track,
-.content::-webkit-scrollbar-track {
+.content::-webkit-scrollbar-track,
+.right-box::-webkit-scrollbar-track {
   background: #f1f1f100;
   border-radius: 10px;
 }

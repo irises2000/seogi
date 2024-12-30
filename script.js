@@ -85,7 +85,7 @@ function showPopup(date, imgSrc, content, footnote, link) {
       <!-- Center Box -->
       <div class="center-box">
         <div class="popup-date">${date}</div>
-        <div class="popup-image"><img src="${imgSrc}" alt="Popup Image"></div>
+        <div class="popup-image"><img src="${imgSrc}" alt=""></div>
         <div class="popup-content-text">${formattedContent}</div>
       </div>
 
