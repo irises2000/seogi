@@ -73,29 +73,39 @@ function showPopup(date, imgSrc, content, footnote, link) {
     ? `<a href="${link}" class="popup-link-button" target="_blank">Visit Link</a>`
     : "";
 
+  const isMobile = window.innerWidth <= 768; // 모바일 환경 감지
+
   popup.innerHTML = `
-  <div class="popup-content">
-    <button class="close-btn" onclick="closePopup()">✕</button>
-    <div class="popup-inner">
-      <!-- Left Box -->
-      <div class="left-box">
-        <div class="popup-link">${linkButton}</div>
-      </div>
-
-      <!-- Center Box -->
-      <div class="center-box">
-        <div class="popup-date">${date}</div>
-        <div class="popup-image"><img src="${imgSrc}" alt=""></div>
-        <div class="popup-content-text">${formattedContent}</div>
-      </div>
-
-      <!-- Right Box -->
-      <div class="right-box">
-        <div class="popup-footnote">${formattedFootnote}</div>
+    <div class="popup-content">
+      <button class="close-btn" onclick="closePopup()">✕</button>
+      <div class="popup-inner">
+        ${
+          !isMobile || linkButton
+            ? `
+        <!-- Left Box -->
+        <div class="left-box">
+          <div class="popup-link">${linkButton}</div>
+        </div>`
+            : ""
+        }
+        <!-- Center Box -->
+        <div class="center-box">
+          <div class="popup-date">${date}</div>
+          <div class="popup-image"><img src="${imgSrc}" alt=""></div>
+          <div class="popup-content-text">${formattedContent}</div>
+        </div>
+        ${
+          !isMobile || formattedFootnote
+            ? `
+        <!-- Right Box -->
+        <div class="right-box">
+          <div class="popup-footnote">${formattedFootnote}</div>
+        </div>`
+            : ""
+        }
       </div>
     </div>
-  </div>
-`;
+  `;
 
   document.body.appendChild(popup);
 }
@@ -104,45 +114,6 @@ function showPopup(date, imgSrc, content, footnote, link) {
 function closePopup() {
   const popup = document.querySelector(".popup");
   if (popup) popup.remove();
-}
-
-function renderPopup({
-  date,
-  imgSrc,
-  formattedContent,
-  linkButton,
-  formattedFootnote,
-}) {
-  const isMobile = window.innerWidth <= 768; // 모바일 판형 감지
-
-  popup.innerHTML = `
-   <div class="popup-content">
-    <button class="close-btn" onclick="closePopup()">✕</button>
-    <div class="popup-inner">
-      <div class="center-box">
-        <div class="popup-date">${date}</div>
-        <div class="popup-image"><img src="${imgSrc}" alt="Popup Image"></div>
-        <div class="popup-content-text">${formattedContent}</div>
-      </div>
-      ${
-        linkButton
-          ? `
-      <div class="left-box">
-        <div class="popup-link">${linkButton}</div>
-      </div>`
-          : ""
-      }
-      ${
-        formattedFootnote
-          ? `
-      <div class="right-box">
-        <div class="popup-footnote">${formattedFootnote}</div>
-      </div>`
-          : ""
-      }
-    </div>
-  </div>
-  `;
 }
 
 // 페이지 로드 시 데이터 로드
