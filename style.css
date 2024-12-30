@@ -275,3 +275,45 @@ td {
   background: #f1f1f100;
   border-radius: 10px;
 }
+
+/* 모바일 화면 미디어 쿼리 */
+@media (max-width: 768px) {
+  .popup-inner {
+    display: flex;
+    flex-direction: column; /* 세로로 나열 */
+    gap: 10px;
+  }
+
+  .center-box {
+    order: 1; /* center-box를 가장 위에 배치 */
+  }
+
+  .left-box {
+    order: 2; /* left-box를 center-box 아래에 배치 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .right-box {
+    order: 3; /* right-box를 가장 아래에 배치 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .popup-link {
+    text-align: center;
+    font-size: 16px;
+    color: #007bff;
+  }
+
+  .popup-footnote {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+  }
+}
