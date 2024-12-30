@@ -285,11 +285,11 @@ td {
   }
 
   .center-box {
-    order: 1; /* center-box를 가장 위에 배치 */
+    order: 1; /* 항상 위에 위치 */
   }
 
   .left-box {
-    order: 2; /* left-box를 center-box 아래에 배치 */
+    order: 2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -297,23 +297,12 @@ td {
   }
 
   .right-box {
-    order: 3; /* right-box를 가장 아래에 배치 */
+    order: 3;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
   }
 
-  .popup-link {
-    text-align: center;
-    font-size: 16px;
-    color: #007bff;
-  }
-
-  .popup-footnote {
-    text-align: center;
-    font-size: 14px;
-    color: #333;
-    line-height: 1.5;
-  }
+  /* 빈 박스를 제거한 경우에 대한 레이아웃 조정은 필요 없음 */
 }
