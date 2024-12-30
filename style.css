@@ -284,6 +284,10 @@ td {
   border-radius: 10px;
 }
 
+.table-container::-webkit-scrollbar {
+  display: none;
+}
+
 /* 모바일 화면 미디어 쿼리 */
 @media (max-width: 768px) {
   .popup-inner {
