@@ -52,11 +52,21 @@ table {
   flex-direction: row;
 }
 
+/* writer 값이 'JY'인 셀의 배경색 */
+.writer-jy {
+  background-color: #ffffff; /* 원하는 색상 코드로 변경 가능 */
+}
+
+/* writer 값이 'HY'인 셀의 배경색 */
+.writer-hy {
+  background-color: #f4f4f4; /* 원하는 색상 코드로 변경 가능 */
+}
+
 th,
 td {
   padding: 15px;
   text-align: center;
-  border: 1px solid #ddd;
+  border-left: 1px solid #ddd;
   height: 100%;
   vertical-align: middle; /* 세로 방향 중앙 정렬 */
   display: flex;

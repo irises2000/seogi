@@ -23,6 +23,7 @@ function loadData() {
       const imageIndex = headers.indexOf("img");
       const footnoteIndex = headers.indexOf("footnote");
       const linkIndex = headers.indexOf("link");
+      const writerIndex = headers.indexOf("writer");
 
       const rows = result.data.slice(1);
 
@@ -32,12 +33,20 @@ function loadData() {
         const imgSrc = row[imageIndex] || "";
         let footnote = row[footnoteIndex] || "";
         let link = row[linkIndex] || "";
+        const writer = row[writerIndex] || "";
 
         content = content.replace(/\\n|Ctrl\+N/g, "\n");
         footnote = footnote.replace(/\\n|Ctrl\+N/g, "\n");
 
         const tr = document.createElement("tr");
         const td = document.createElement("td");
+
+        // writer 값에 따라 클래스 추가
+        if (writer === "JY") {
+          td.classList.add("writer-jy");
+        } else if (writer === "HY") {
+          td.classList.add("writer-hy");
+        }
 
         const contentWithLineBreak = content.replace(/\n/g, "<br>");
         const footnoteWithLineBreak = footnote.replace(/\n/g, "<br>");
