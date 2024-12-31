@@ -108,12 +108,24 @@ function showPopup(date, imgSrc, content, footnote, link) {
   `;
 
   document.body.appendChild(popup);
+
+  // 10ms 지연 후 'show' 클래스 추가하여 페이드 인 효과 트리거
+  setTimeout(() => {
+    popup.classList.add("show");
+  }, 10);
 }
 
-// 팝업 닫기 함수
 function closePopup() {
   const popup = document.querySelector(".popup");
-  if (popup) popup.remove();
+  if (popup) {
+    // 'show' 클래스 제거하여 페이드 아웃 효과 트리거
+    popup.classList.remove("show");
+
+    // 애니메이션 완료 후 팝업 제거
+    setTimeout(() => {
+      popup.remove();
+    }, 500); // CSS의 transition 시간과 일치
+  }
 }
 
 // 페이지 로드 시 데이터 로드
