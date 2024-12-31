@@ -116,24 +116,31 @@ function showPopup(date, imgSrc, content, footnote, link) {
     </div>
   `;
 
+  // 팝업의 초기 상태 설정
+  popup.style.opacity = "0";
+  popup.style.transform = "scale(0.9)";
+  popup.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+
   document.body.appendChild(popup);
 
-  // 10ms 지연 후 'show' 클래스 추가하여 페이드 인 효과 트리거
-  setTimeout(() => {
-    popup.classList.add("show");
-  }, 10);
+  // 다음 프레임에서 애니메이션 시작
+  requestAnimationFrame(() => {
+    popup.style.opacity = "1";
+    popup.style.transform = "scale(1)";
+  });
 }
 
 function closePopup() {
   const popup = document.querySelector(".popup");
   if (popup) {
     // 'show' 클래스 제거하여 페이드 아웃 효과 트리거
-    popup.classList.remove("show");
+    popup.style.opacity = "0";
+    popup.style.transform = "scale(0.9)";
 
     // 애니메이션 완료 후 팝업 제거
     setTimeout(() => {
       popup.remove();
-    }, 500); // CSS의 transition 시간과 일치
+    }, 300); // CSS의 transition 시간과 일치
   }
 }
 
