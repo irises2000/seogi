@@ -79,7 +79,7 @@ function showPopup(date, imgSrc, content, footnote, link) {
   const formattedFootnote = footnote.replace(/\n/g, "<br>");
 
   const linkButton = link
-    ? `<a href="${link}" class="popup-link-button" target="_blank">Visit Link</a>`
+    ? `<a href="${link}" class="popup-link-button" target="_blank">Reference</a>`
     : "";
 
   const isMobile = window.innerWidth <= 768; // 모바일 환경 감지

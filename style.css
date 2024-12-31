@@ -316,6 +316,13 @@ td {
     gap: 10px;
   }
 
+  .close-btn {
+    top: 10px;
+    right: 10px;
+    color: black;
+    font-size: 30px;
+  }
+
   .center-box {
     order: 1; /* 항상 위에 위치 */
   }
