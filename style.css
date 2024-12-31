@@ -323,6 +323,10 @@ td {
     font-size: 30px;
   }
 
+  .close-btn:hover {
+    font-weight: bolder;
+  }
+
   .center-box {
     order: 1; /* 항상 위에 위치 */
   }
