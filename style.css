@@ -27,7 +27,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* 전체 화면 스크롤 방지 */
+  overflow: auto; /* 전체 화면 스크롤 허용 */
   background-color: #ffffff;
   overscroll-behavior: contain; /* 스크롤 체이닝 방지 */
   user-select: none; /* 텍스트 선택 방지 */
@@ -300,8 +300,20 @@ td {
   border-radius: 10px;
 }
 
-.table-container::-webkit-scrollbar {
-  display: none;
+/* 스크롤바 전체 */
+::-webkit-scrollbar {
+  height: 20px; /* 가로 스크롤바 높이 */
+}
+
+/* 스크롤바 트랙 */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0); /* 트랙 배경색 */
+}
+
+/* 스크롤바 썸(막대) */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5); /* 썸 배경색 */
+  border-radius: 20px; /* 썸 모서리 둥글게 */
 }
 
 /* 모바일 화면 미디어 쿼리 */
