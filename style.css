@@ -104,6 +104,7 @@ td {
 
 .image {
   align-self: flex-end;
+  justify-items: center;
 }
 
 .image img {
