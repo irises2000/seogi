@@ -302,7 +302,7 @@ td {
 
 /* 스크롤바 전체 */
 ::-webkit-scrollbar {
-  height: 20px; /* 가로 스크롤바 높이 */
+  height: 15px; /* 가로 스크롤바 높이 */
 }
 
 /* 스크롤바 트랙 */
@@ -312,8 +312,8 @@ td {
 
 /* 스크롤바 썸(막대) */
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.5); /* 썸 배경색 */
-  border-radius: 20px; /* 썸 모서리 둥글게 */
+  background: rgb(212, 212, 212); /* 썸 배경색 */
+  border-radius: 0px; /* 썸 모서리 둥글게 */
 }
 
 /* 모바일 화면 미디어 쿼리 */
