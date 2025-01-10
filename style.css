@@ -208,7 +208,7 @@ td {
   height: 100%; /* 부모 높이의 100% 사용 */
   overflow: hidden; /* 내용이 넘어가지 않도록 설정 */
   box-sizing: border-box;
-  padding: 10px;
+  padding: 15px;
 
   justify-self: center;
 }
@@ -237,6 +237,7 @@ td {
   max-width: 100%;
   max-height: 300px;
   object-fit: contain;
+  filter: blur(7px);
 }
 
 /* 텍스트 */
@@ -248,6 +249,8 @@ td {
   line-height: 1.5;
   text-align: center;
   height: 100%; /* 부모 높이에 맞게 설정 */
+
+  filter: blur(7px);
 }
 
 /* 우측 박스 */
