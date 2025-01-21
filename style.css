@@ -105,7 +105,7 @@ td {
 .image {
   align-self: flex-end;
   justify-items: center;
-  filter: blur(10px);
+  /* filter: blur(10px); */
 }
 
 .image img {
@@ -121,7 +121,7 @@ td {
   word-wrap: break-word;
   text-align: center;
   margin-bottom: 30px;
-  filter: blur(8px);
+  /* filter: blur(8px); */
   overflow-y: auto;
 }
 
